@@ -1,0 +1,14 @@
+Q2.1: The first for loop updates the position component based on the motion component
+      and the rotation of the position component.
+
+Q2.2: Updates the position of the parent of any entity with a position ands a parent
+      component.
+
+Q2.3: In the update function of the Game class cpp
+
+Q2.4: The Background component is simply used to decide what the RenderSystem shouold
+      draw first and has no values. It is used by the background entity.
+
+Q2.5: The Tank Base does not draw due to the fact that the rendersystem looks for
+      anything with a display component which the tank base no longer has and
+      therefore does not draw
