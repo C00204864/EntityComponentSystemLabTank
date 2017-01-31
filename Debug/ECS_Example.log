@@ -1,16 +1,18 @@
 ﻿  TankAi.cpp
-c:\ecs\entitycomponentsystemlabtank\src\ai\tankai.cpp(95): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  ECS_Example.vcxproj -> C:\ECS\EntityComponentSystemLabTank\Debug\ECS_Example.exe
-  ECS_Example.vcxproj -> C:\ECS\EntityComponentSystemLabTank\Debug\ECS_Example.pdb (Partial PDB)
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-audio-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-audio-d-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-graphics-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-graphics-d-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-network-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-network-d-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-system-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-system-d-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-window-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\sfml-window-d-2.dll
-  C:\ECS\EntityComponentSystemLabTank\dlls\thor-d.dll
+c:\entitycomponentsystemlabtank\src\ai\tankai.cpp(95): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\entitycomponentsystemlabtank\src\ai\tankai.cpp(122): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\entitycomponentsystemlabtank\src\ai\tankai.cpp(127): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  ECS_Example.vcxproj -> C:\EntityComponentSystemLabTank\Debug\ECS_Example.exe
+  ECS_Example.vcxproj -> C:\EntityComponentSystemLabTank\Debug\ECS_Example.pdb (Partial PDB)
+  C:\EntityComponentSystemLabTank\dlls\sfml-audio-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-audio-d-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-graphics-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-graphics-d-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-network-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-network-d-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-system-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-system-d-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-window-2.dll
+  C:\EntityComponentSystemLabTank\dlls\sfml-window-d-2.dll
+  C:\EntityComponentSystemLabTank\dlls\thor-d.dll
          11 file(s) copied.

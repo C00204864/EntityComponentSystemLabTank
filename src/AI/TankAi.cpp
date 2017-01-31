@@ -119,11 +119,18 @@ const sf::CircleShape TankAi::findMostThreateningObstacle(entityx::Entity::Id ai
 {		
 	sf::CircleShape emptyObstacle;
 	emptyObstacle.setRadius(0.f);
+	float closestDistance = Math::distance(entities.get(aiId).component<Position>()->m_position, m_obstacles[0].getPosition());
 	for (auto & obstacle : m_obstacles)
 	{
 		if (Math::lineIntersectsCircle(m_ahead, m_halfAhead, obstacle))
 		{
-			return obstacle;
+			float distance = Math::distance(entities.get(aiId).component<Position>()->m_position, obstacle.getPosition());
+			if (distance < closestDistance)
+			{
+				closestDistance = distance;
+				emptyObstacle = obstacle;
+			}
+			
 		}
 	}
 	return emptyObstacle;
