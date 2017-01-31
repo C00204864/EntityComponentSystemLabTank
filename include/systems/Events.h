@@ -47,3 +47,12 @@ struct EvKeyboard : public entityx::Event<EvKeyboard>
 	sf::Keyboard::Key m_key;
 	bool m_isDown;
 };
+
+/// <summary>
+/// An event used to determine the player ID
+/// </summary>
+struct EvReportPlayerId : public entityx::Event<EvReportPlayerId>
+{
+	EvReportPlayerId(entityx::Entity::Id playerId) : m_playerId(playerId) {}
+	entityx::Entity::Id m_playerId;
+};

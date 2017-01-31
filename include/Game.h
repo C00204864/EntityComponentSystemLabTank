@@ -13,6 +13,7 @@
 #include "systems/MovementSystem.h"
 #include "KeyHandler.h"
 #include "systems\PlayerControlSystem.h"
+#include "systems\AiControlSystem.h"
 
 /// <summary>
 /// @Author Ross Palmer

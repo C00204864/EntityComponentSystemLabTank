@@ -31,6 +31,23 @@ void LevelSystem::receive(const EvInit& e)
    TankBaseCreator(e.m_level.m_tank.m_position, false).create(tankBaseEntity);
 
    TurretCreator(e.m_level.m_tank, tankBaseEntity, false).create(m_entityManager.create());
-   
+
+   //Create the AI tank component
+   entityx::Entity aiTankBaseEntity = m_entityManager.create();
+
+   //Emit the event so the AIControlSystem will get it's id - note how we can get an id from the entity.
+   m_eventManager.emit<EvReportPlayerId>(tankBaseEntity.id());
+
+   //Create the Ai tank base
+   TankBaseCreator(e.m_level.m_aiTank.m_position, true).create(aiTankBaseEntity);
+
+   //Create the AI turret
+   TurretCreator(e.m_level.m_aiTank, aiTankBaseEntity, true).create(m_entityManager.create());
+
+   //Create the Walls
+   for (ObstacleData const & obstacle : e.m_level.m_obstacles)
+   {
+	   WallCreator(obstacle.m_type, obstacle.m_position, obstacle.m_rotation).create(m_entityManager.create());
+   }
 }
 
