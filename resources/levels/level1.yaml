@@ -10,7 +10,7 @@ ai_tank:
    reload_time: 1000  
 projectile:
    speed: 1000
-   damage: 10	
+   damage: 10
 obstacles: 
    - type: wall
      position: {x: 100, y: 660}
@@ -84,3 +84,22 @@ obstacles:
    - type: wall
      position: {x: 1032, y: 632}
      rotation: 0
+nodes:
+   - type: node
+     position: {x: 510, y: 110}
+     radius: 100
+   - type: node
+     position: {x: 220, y: 220}
+     radius: 100
+   - type: node
+     position: {x: 330, y: 330}
+     radius: 100
+   - type: node
+     position: {x: 440, y: 440}
+     radius: 100
+   - type: node
+     position: {x: 550, y: 550}
+     radius: 100
+   - type: node
+     position: {x: 660, y: 660}
+     radius: 100

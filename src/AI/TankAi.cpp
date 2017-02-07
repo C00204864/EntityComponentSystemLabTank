@@ -1,10 +1,13 @@
 #include "ai/TankAi.h"
+#include <iostream>
 
 
-TankAi::TankAi(std::vector<sf::CircleShape> const & obstacles, entityx::Entity::Id id)
+TankAi::TankAi(std::vector<sf::CircleShape> const & nodes, std::vector<sf::CircleShape> const & obstacles, entityx::Entity::Id id)
   : m_aiBehaviour(AiBehaviour::SEEK_PLAYER)
   , m_steering(0,0)
-  , m_obstacles(obstacles)
+  , m_obstacles(obstacles),
+	m_nodes(nodes),
+	nodeNumber(0)
 {
 }
 
@@ -74,15 +77,36 @@ void TankAi::update(entityx::Entity::Id playerId,
 
 sf::Vector2f TankAi::seek(entityx::Entity::Id playerId,
 						  entityx::Entity::Id aiId,
-	                      entityx::EntityManager& entities) const
+	                      entityx::EntityManager& entities)
 {
-	entityx::Entity playerTank = entities.get(playerId);
+	/*entityx::Entity playerTank = entities.get(playerId);
 	entityx::Entity aiTank = entities.get(aiId);
 	Position::Handle playerPos = playerTank.component<Position>();
 	sf::Vector2f playerVec = playerPos->m_position;
 	Position::Handle aiPos = aiTank.component<Position>();
 	sf::Vector2f aiVec = aiPos->m_position;
-	return (playerVec - aiVec);
+	return (playerVec - aiVec);*/
+
+	entityx::Entity aiTank = entities.get(aiId);
+	Position::Handle aiPos = aiTank.component<Position>();
+	sf::Vector2f aiVec = aiPos->m_position;
+	
+	if (Math::distance(m_nodes.at(nodeNumber).getPosition(), aiVec) < m_nodes.at(nodeNumber).getRadius())
+	{
+		if (m_nodes.size() == nodeNumber)
+		{
+			nodeNumber = 0;
+		}
+		else
+		{
+			nodeNumber++;
+		}
+	}
+
+	//std::system("cls");
+	//std::cout << m_nodes.at(nodeNumber).getPosition().x << ", " << m_nodes.at(nodeNumber).getPosition().y << "......" << aiVec.x << ", " << aiVec.y << std::endl;
+
+	return m_nodes.at(nodeNumber).getPosition() - aiVec;
 }
 
 sf::Vector2f TankAi::collisionAvoidance(entityx::Entity::Id aiId, 

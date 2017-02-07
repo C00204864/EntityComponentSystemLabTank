@@ -21,6 +21,14 @@ void operator >> (const YAML::Node& tankNode, TankData& tank)
 	tank.m_reloadTime = tankNode["reload_time"].as<int>();	
 }
 
+void operator >> (const YAML::Node & nodeNode, NodeData& node)
+{
+	node.m_type = nodeNode["type"].as<std::string>();
+	node.m_position.x = nodeNode["position"]["x"].as<float>();
+	node.m_position.y = nodeNode["position"]["y"].as<float>();
+	node.m_radius = nodeNode["radius"].as<float>();
+}
+
 void operator >> (const YAML::Node& projectileNode, ProjectileData& projectile)
 {	
 	projectile.m_speed = projectileNode["speed"].as<double>();
@@ -43,6 +51,14 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 	  ObstacleData obstacle;
 	  obstaclesNode[i] >> obstacle;
 	  level.m_obstacles.push_back(obstacle);
+   }
+
+   const YAML::Node& nodeNode = levelNode["nodes"].as<YAML::Node>();
+   for(unsigned i = 0; i < nodeNode.size(); ++i)
+   {
+	   NodeData node;
+	   nodeNode[i] >> node;
+	   level.m_nodes.push_back(node);
    }
 }
 

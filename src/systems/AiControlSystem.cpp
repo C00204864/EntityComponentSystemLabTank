@@ -10,6 +10,7 @@ void AiControlSystem::configure(entityx::EventManager& events)
    events.subscribe<EvReportPlayerId>(*this);
    events.subscribe<entityx::ComponentAddedEvent<Ai>>(*this);
    events.subscribe<entityx::ComponentAddedEvent<Wall>>(*this);
+   events.subscribe<entityx::ComponentAddedEvent<Node>>(*this);
 }
 
 void AiControlSystem::receive(const EvReportPlayerId& e)
@@ -20,7 +21,7 @@ void AiControlSystem::receive(const EvReportPlayerId& e)
 void AiControlSystem::receive(const entityx::ComponentAddedEvent<Ai>& e)
 {
     Ai::Handle ai = e.component;
-    m_tankAi.reset(new TankAi(m_obstacles, ai->m_id));	// id of turret
+    m_tankAi.reset(new TankAi(m_nodes, m_obstacles, ai->m_id));	// id of turret
 }
 
 void AiControlSystem::receive(const entityx::ComponentAddedEvent<Wall>& e)
@@ -34,6 +35,17 @@ void AiControlSystem::receive(const entityx::ComponentAddedEvent<Wall>& e)
 	circle.setOrigin(circle.getRadius(), circle.getRadius());
 	circle.setPosition(wallPos->m_position);
 	m_obstacles.push_back(circle);	
+}
+
+void AiControlSystem::receive(const entityx::ComponentAddedEvent<Node>& e)
+{
+	entityx::Entity ent = e.entity;
+	Position::Handle nodePos = ent.component<Position>();
+	float radius = ent.component<Node>()->m_radius;
+	sf::CircleShape circle(radius);
+	circle.setOrigin(circle.getRadius(), circle.getRadius());
+	circle.setPosition(nodePos->m_position);
+	m_nodes.push_back(circle);
 }
 
 void AiControlSystem::update(entityx::EntityManager& entities,
