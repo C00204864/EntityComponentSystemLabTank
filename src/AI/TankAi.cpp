@@ -90,10 +90,11 @@ sf::Vector2f TankAi::seek(entityx::Entity::Id playerId,
 	entityx::Entity aiTank = entities.get(aiId);
 	Position::Handle aiPos = aiTank.component<Position>();
 	sf::Vector2f aiVec = aiPos->m_position;
-	
+
+	std::cout << m_nodes.at(nodeNumber).getPosition().x << ", " << m_nodes.at(nodeNumber).getPosition().y << std::endl;
 	if (Math::distance(m_nodes.at(nodeNumber).getPosition(), aiVec) < m_nodes.at(nodeNumber).getRadius())
 	{
-		if (m_nodes.size() == nodeNumber)
+		if (m_nodes.size() - 1 == nodeNumber)
 		{
 			nodeNumber = 0;
 		}
