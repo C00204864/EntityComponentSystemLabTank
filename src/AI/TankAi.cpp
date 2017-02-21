@@ -55,7 +55,7 @@ void TankAi::update(entityx::Entity::Id playerId,
 	else if ((static_cast<int>(std::round(dest - currentRotation + 360))) % 360 < 180)
 	{
 		// rotate clockwise
-		position->m_rotation += 1;
+		position->m_rotation = static_cast<int>((position->m_rotation) + 1) % 360;
 	}
 	else
 	{

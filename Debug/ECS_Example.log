@@ -1,18 +1,40 @@
-﻿  TankAi.cpp
-c:\clone\entitycomponentsystemlabtank\src\ai\tankai.cpp(120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-c:\clone\entitycomponentsystemlabtank\src\ai\tankai.cpp(147): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\clone\entitycomponentsystemlabtank\src\ai\tankai.cpp(152): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  ECS_Example.vcxproj -> C:\clone\EntityComponentSystemLabTank\Debug\ECS_Example.exe
-  ECS_Example.vcxproj -> C:\clone\EntityComponentSystemLabTank\Debug\ECS_Example.pdb (Partial PDB)
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-audio-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-audio-d-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-graphics-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-graphics-d-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-network-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-network-d-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-system-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-system-d-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-window-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\sfml-window-d-2.dll
-  C:\clone\EntityComponentSystemLabTank\dlls\thor-d.dll
-         11 file(s) copied.
+﻿  EntityCreator.cpp
+c:\clonetankgame\entitycomponentsystemlabtank\include\entityx\entity.h(582): warning C4291: 'void *operator new(std::size_t,void *) throw()': no matching operator delete found; memory will not be freed if initialization throws an exception
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\vcruntime_new.h(86): note: see declaration of 'operator new'
+  c:\clonetankgame\entitycomponentsystemlabtank\include\entityx\entity.h(866): note: see reference to function template instantiation 'entityx::ComponentHandle<Derived,entityx::EntityManager> entityx::EntityManager::assign<C,>(entityx::Entity::Id)' being compiled
+          with
+          [
+              Derived=Position,
+              C=Position
+          ]
+  c:\clonetankgame\entitycomponentsystemlabtank\src\entitycreator.cpp(11): note: see reference to function template instantiation 'entityx::ComponentHandle<Derived,entityx::EntityManager> entityx::Entity::assign<Position,>(void)' being compiled
+          with
+          [
+              Derived=Position
+          ]
+c:\clonetankgame\entitycomponentsystemlabtank\include\entityx\entity.h(582): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+  c:\clonetankgame\entitycomponentsystemlabtank\include\entityx\entity.h(866): note: see reference to function template instantiation 'entityx::ComponentHandle<Derived,entityx::EntityManager> entityx::EntityManager::assign<C,_Ty>(entityx::Entity::Id,_Ty &&)' being compiled
+          with
+          [
+              Derived=Motion,
+              C=Motion,
+              _Ty=int
+          ]
+  c:\clonetankgame\entitycomponentsystemlabtank\src\entitycreator.cpp(26): note: see reference to function template instantiation 'entityx::ComponentHandle<Derived,entityx::EntityManager> entityx::Entity::assign<Motion,int>(int &&)' being compiled
+          with
+          [
+              Derived=Motion
+          ]
+c:\clonetankgame\entitycomponentsystemlabtank\include\entityx\entity.h(582): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  c:\clonetankgame\entitycomponentsystemlabtank\include\entityx\entity.h(866): note: see reference to function template instantiation 'entityx::ComponentHandle<Derived,entityx::EntityManager> entityx::EntityManager::assign<C,double&>(entityx::Entity::Id,double &)' being compiled
+          with
+          [
+              Derived=Node,
+              C=Node
+          ]
+  c:\clonetankgame\entitycomponentsystemlabtank\src\entitycreator.cpp(95): note: see reference to function template instantiation 'entityx::ComponentHandle<Derived,entityx::EntityManager> entityx::Entity::assign<Node,double&>(double &)' being compiled
+          with
+          [
+              Derived=Node
+          ]
+LINK : fatal error LNK1104: cannot open file 'C:\cloneTankGame\EntityComponentSystemLabTank\Debug\ECS_Example.ilk'
