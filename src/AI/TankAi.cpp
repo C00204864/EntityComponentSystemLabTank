@@ -2,12 +2,13 @@
 #include <iostream>
 
 
-TankAi::TankAi(std::vector<sf::CircleShape> const & nodes, std::vector<sf::CircleShape> const & obstacles, entityx::Entity::Id id)
+TankAi::TankAi(std::vector<sf::CircleShape> const & nodes, std::vector<sf::CircleShape> const & obstacles, entityx::Entity::Id id, entityx::EventManager& events)
   : m_aiBehaviour(AiBehaviour::SEEK_PLAYER)
   , m_steering(0,0)
   , m_obstacles(obstacles),
 	m_nodes(nodes),
-	nodeNumber(0)
+	nodeNumber(0),
+	m_eventManager(events)
 {
 }
 
@@ -91,7 +92,6 @@ sf::Vector2f TankAi::seek(entityx::Entity::Id playerId,
 	Position::Handle aiPos = aiTank.component<Position>();
 	sf::Vector2f aiVec = aiPos->m_position;
 
-	std::cout << m_nodes.at(nodeNumber).getPosition().x << ", " << m_nodes.at(nodeNumber).getPosition().y << std::endl;
 	if (Math::distance(m_nodes.at(nodeNumber).getPosition(), aiVec) < m_nodes.at(nodeNumber).getRadius())
 	{
 		if (m_nodes.size() - 1 == nodeNumber)
@@ -101,12 +101,9 @@ sf::Vector2f TankAi::seek(entityx::Entity::Id playerId,
 		else
 		{
 			nodeNumber++;
+			m_eventManager.emit<EvReportNodeNumber>(nodeNumber);
 		}
 	}
-
-	//std::system("cls");
-	//std::cout << m_nodes.at(nodeNumber).getPosition().x << ", " << m_nodes.at(nodeNumber).getPosition().y << "......" << aiVec.x << ", " << aiVec.y << std::endl;
-
 	return m_nodes.at(nodeNumber).getPosition() - aiVec;
 }
 

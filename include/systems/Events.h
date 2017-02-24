@@ -56,3 +56,12 @@ struct EvReportPlayerId : public entityx::Event<EvReportPlayerId>
 	EvReportPlayerId(entityx::Entity::Id playerId) : m_playerId(playerId) {}
 	entityx::Entity::Id m_playerId;
 };
+
+/// <summary>
+/// An event used to determine the AI's current node number
+/// </summary>
+struct  EvReportNodeNumber : public entityx::Event<EvReportNodeNumber>
+{
+	EvReportNodeNumber(int nodeNumberIn) : nodeNumber(nodeNumberIn) {};
+	int nodeNumber;
+};

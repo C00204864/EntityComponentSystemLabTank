@@ -1,7 +1,7 @@
 #include "systems/AiControlSystem.h"
 
 
-AiControlSystem::AiControlSystem()
+AiControlSystem::AiControlSystem(entityx::EventManager &managerIn) : m_eventManager(managerIn)
 {
 }
 
@@ -21,7 +21,7 @@ void AiControlSystem::receive(const EvReportPlayerId& e)
 void AiControlSystem::receive(const entityx::ComponentAddedEvent<Ai>& e)
 {
     Ai::Handle ai = e.component;
-    m_tankAi.reset(new TankAi(m_nodes, m_obstacles, ai->m_id));	// id of turret
+    m_tankAi.reset(new TankAi(m_nodes, m_obstacles, ai->m_id, m_eventManager));	// id of turret
 }
 
 void AiControlSystem::receive(const entityx::ComponentAddedEvent<Wall>& e)
@@ -34,7 +34,7 @@ void AiControlSystem::receive(const entityx::ComponentAddedEvent<Wall>& e)
 	sf::CircleShape circle(wallVol->m_box.getRect().width * 1.5f);
 	circle.setOrigin(circle.getRadius(), circle.getRadius());
 	circle.setPosition(wallPos->m_position);
-	m_obstacles.push_back(circle);	
+	m_obstacles.push_back(circle);
 }
 
 void AiControlSystem::receive(const entityx::ComponentAddedEvent<Node>& e)

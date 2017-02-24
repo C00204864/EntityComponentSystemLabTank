@@ -15,7 +15,7 @@ class TankAi
 {
 public:
 
-   TankAi(std::vector<sf::CircleShape> const & nodes, std::vector<sf::CircleShape> const & obstacles, entityx::Entity::Id id);
+   TankAi(std::vector<sf::CircleShape> const & nodes, std::vector<sf::CircleShape> const & obstacles, entityx::Entity::Id id, entityx::EventManager& events);
 
 
    void update(entityx::Entity::Id playerId,  
@@ -61,6 +61,8 @@ private:
 	std::vector<sf::CircleShape> const & m_nodes;
 
 	int nodeNumber;
+
+	entityx::EventManager &m_eventManager;
 
 	enum class AiBehaviour
 	{

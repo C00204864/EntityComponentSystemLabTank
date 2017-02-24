@@ -16,7 +16,7 @@ class AiControlSystem
 {
 public:
 
-   AiControlSystem();
+   AiControlSystem(entityx::EventManager &managerIn);
 
    void configure(entityx::EventManager& events);
 
@@ -41,5 +41,7 @@ private:
 	std::vector<sf::CircleShape> m_obstacles;
 
 	std::vector<sf::CircleShape> m_nodes;
+
+	entityx::EventManager &m_eventManager;
 };
 
