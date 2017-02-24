@@ -62,6 +62,10 @@ private:
 
 	int nodeNumber;
 
+	float currentTime;
+
+	float lastTime;
+
 	entityx::EventManager &m_eventManager;
 
 	enum class AiBehaviour
@@ -71,6 +75,7 @@ private:
 		RETREAT
 	} m_aiBehaviour;
   
-
+	sf::Clock m_clock;
+	sf::Time m_time;
 };
 

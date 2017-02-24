@@ -62,6 +62,8 @@ struct EvReportPlayerId : public entityx::Event<EvReportPlayerId>
 /// </summary>
 struct  EvReportNodeNumber : public entityx::Event<EvReportNodeNumber>
 {
-	EvReportNodeNumber(int nodeNumberIn) : nodeNumber(nodeNumberIn) {};
+	EvReportNodeNumber(int nodeNumberIn, float currentTimeIn, float lastTimeIn) : nodeNumber(nodeNumberIn), currentTime(currentTimeIn), lastTime(lastTimeIn) {};
 	int nodeNumber;
+	float currentTime;
+	float lastTime;
 };

@@ -17,10 +17,13 @@ public:
 	void update(entityx::EntityManager& entities,
 		entityx::EventManager& events,
 		double dt);
+	void setGenericTextProperties(sf::Text & textIn);
 private:
 	sf::RenderWindow & window;
 	sf::Font m_font;
 	sf::Text m_nodeText;
 	sf::Text m_currentLapText;
 	sf::Text m_lastLapText;
+	int lastNodeNumber;
+	int currentNodeNumber;
 };

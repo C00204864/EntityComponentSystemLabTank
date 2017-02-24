@@ -1,5 +1,7 @@
-﻿  HUDSystem.cpp
-c:\clone\entitycomponentsystemlabtank\hudsystem.cpp(9): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+﻿  TankAi.cpp
+c:\clone\entitycomponentsystemlabtank\src\ai\tankai.cpp(128): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\clone\entitycomponentsystemlabtank\src\ai\tankai.cpp(155): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\clone\entitycomponentsystemlabtank\src\ai\tankai.cpp(160): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   ECS_Example.vcxproj -> C:\clone\EntityComponentSystemLabTank\Debug\ECS_Example.exe
   ECS_Example.vcxproj -> C:\clone\EntityComponentSystemLabTank\Debug\ECS_Example.pdb (Partial PDB)
   C:\clone\EntityComponentSystemLabTank\dlls\sfml-audio-2.dll

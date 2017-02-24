@@ -8,8 +8,11 @@ TankAi::TankAi(std::vector<sf::CircleShape> const & nodes, std::vector<sf::Circl
   , m_obstacles(obstacles),
 	m_nodes(nodes),
 	nodeNumber(0),
+	currentTime(0),
+	lastTime(0),
 	m_eventManager(events)
 {
+	m_clock.restart();
 }
 
 void TankAi::update(entityx::Entity::Id playerId,
@@ -17,6 +20,9 @@ void TankAi::update(entityx::Entity::Id playerId,
 	entityx::EntityManager& entities,
 	double dt)
 {
+	m_time = m_clock.restart();
+	currentTime += m_time.asSeconds();
+	m_eventManager.emit<EvReportNodeNumber>(nodeNumber, currentTime, lastTime);
 	entityx::Entity aiTank = entities.get(aiId);
 	Motion::Handle motion = aiTank.component<Motion>();
 	Position::Handle position = aiTank.component<Position>();
@@ -94,6 +100,7 @@ sf::Vector2f TankAi::seek(entityx::Entity::Id playerId,
 
 	if (Math::distance(m_nodes.at(nodeNumber).getPosition(), aiVec) < m_nodes.at(nodeNumber).getRadius())
 	{
+		//nodeNumber = (nodeNumber + 1) % m_nodes.size();
 		if (m_nodes.size() - 1 == nodeNumber)
 		{
 			nodeNumber = 0;
@@ -101,7 +108,11 @@ sf::Vector2f TankAi::seek(entityx::Entity::Id playerId,
 		else
 		{
 			nodeNumber++;
-			m_eventManager.emit<EvReportNodeNumber>(nodeNumber);
+			if (nodeNumber == 1 && currentTime != 0)
+			{
+				lastTime = currentTime;
+				currentTime = 0;
+			}
 		}
 	}
 	return m_nodes.at(nodeNumber).getPosition() - aiVec;
